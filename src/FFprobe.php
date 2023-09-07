@@ -1,18 +1,16 @@
 <?php
-
-namespace AppZz\VideoConverter;
-
+namespace AppZz\VideoTools;
 use AppZz\Helpers\Arr;
 use AppZz\CLI\Process;
-use AppZz\VideoConverter\Exceptions\FFprobeException;
+use AppZz\VideoTools\Exceptions\FFprobeException;
 
 /**
  * FFprobe Wrapper
- * @package VideoConverer/FFprobe
- * @version 1.4.x
+ * @package VideoTools/FFprobe
+ * @version 1.3.x
  * @author CoolSwitcher
  * @license MIT
- * @link https://github.com/a-pp-zz/video-converter
+ * @link https://github.com/a-pp-zz/ffprobe
  */
 class FFprobe
 {
@@ -111,6 +109,7 @@ class FFprobe
         $location = Arr::path($result, 'format.tags.location', '.', NULL);
         $date = Arr::path($result, 'format.tags.date', '.', '');
         $creation_time = Arr::path($result, 'format.tags.creation_time', '.', '');
+        $cinema_p3_log = Arr::path($result, 'format#tags#cinema.p3.creativePreset', '#', '');
 
         if (!empty ($location) and preg_match('#([\-\+]{1})(.*)([\-\+]{1})(.*)[\-\+]{1}.*/$#', $location, $loc)) {
             $needed['latitude'] = (double)($loc[1] . $loc[2]);
@@ -146,6 +145,8 @@ class FFprobe
             } else {
                 $stream_data = $stream;
             }
+
+            $stream_data = $stream;
 
             if (isset($stream_data['bit_rate'])) {
                 $stream_data['bit_rate_human'] = FFprobe::human_bitrate($stream_data['bit_rate']);

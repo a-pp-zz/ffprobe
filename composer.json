@@ -1,13 +1,13 @@
 {
-    "name": "appzz/video-converter",
-    "description": "Video converter tools wrapper for ffmpeg, ffprobe",
-    "type": "library",
+    "name": "appzz/ffprobe",
+    "description": "FFprobe wrapper",
+    "type": "wrapper",
     "keywords": [
-        "ffmpeg",
+        "wrapper",
         "ffprobe"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/a-pp-zz/video-converter.git",
+    "homepage": "https://github.com/a-pp-zz/ffprobe.git",
     "authors": [
         {
             "name": "CoolSwitcher",
@@ -16,12 +16,11 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "appzz/filesystem": "dev-master",
+        "php": ">=5.6",
         "appzz/arr": "1.*",
         "appzz/process": "2.*"
     },
     "autoload": {
-        "psr-4": {"AppZz\\VideoConverter\\": "src/"}
+        "psr-4": {"AppZz\\VideoTools\\": "src/"}
     }
 }
